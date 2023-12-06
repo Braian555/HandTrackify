@@ -4,7 +4,7 @@ Este projeto utiliza a biblioteca Mediapipe e OpenCV para rastrear gestos das m√
 
 ## Requisitos
 
-- Python 3.x
+- Python 3.8 - 3.11
 - OpenCV
 - Mediapipe
 - PyAutoGUI
