@@ -41,6 +41,11 @@ Você pode configurar a resolução da câmera, a confiança da detecção e out
 - **Minimizar Janelas:** Ao abrir a mão, todas as janelas serão minimizadas pressionando `Win + D`.
 - **Alternar entre Aplicativos:** Ao abrir a mão e fechar novamente, alternará entre aplicativos usando `Alt + Tab`.
 
+- **Layout dos IDS:**
+      ![image](https://github.com/Braian555/HandTrackify/assets/76633571/5bff25fa-240b-4168-b1c2-661e06185a76)
+
+
+
 ## Cores dos Círculos
 
 As cores dos círculos desenhados nas mãos podem ser personalizadas no arquivo `handDetector.py`. Modifique os valores RGB para alterar as cores.
