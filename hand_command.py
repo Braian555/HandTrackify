@@ -86,7 +86,7 @@ while test == True:
         cv2.circle(img, RIT, 5, (255, 0, 255), cv2.FILLED)
         cv2.circle(img, PIT, 5, (255, 0, 255), cv2.FILLED)
 
-        # Variável para contar dedos levantados
+        # Variável para contar dedos levantado
         dedos_levantados = 0
 
         # Comparação correta para verificar se o dedo está acima do indicador

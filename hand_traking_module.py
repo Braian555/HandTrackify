@@ -32,7 +32,7 @@ class handDetector():
         """Lists the position/type of landmarks
         we give in the list and in the list ww have stored
         type and position of the landmarks.
-        List has all the lm position"""
+        List has all the lm  position"""
 
         lmlist = []
 
