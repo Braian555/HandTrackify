@@ -26,10 +26,20 @@ cap.set(4, hCam)
 # Inicialização do detector de mãos
 detector = htm.handDetector(detectionCon=0.7, maxHands=1)
 
-# Variável de controle para o loop principal
-test = True
+# Variaveis de controle para o loop
+gestOn = False
+active = False
 
-while test:
+# Adicione um novo conjunto de variáveis para controlar o estado anterior de cada dedo
+prev_state = {
+    'thumb': False,
+    'index': False,
+    'middle': False,
+    'ring': False,
+    'pinky': False
+}
+
+while True:
 
     # Captura de um frame da câmera
     success, img = cap.read()
@@ -86,6 +96,63 @@ while test:
         # Exibir o número total de dedos levantados
         cv2.putText(img, f'Dedos Levantados: {dedos_levantados}', (50, 50), font, fontScale, color, thickness, cv2.LINE_AA)
 
+        
+        # Verifica a se o usuario que usar navegação por gestos
+        navGest = cv2.waitKey(1) & 0xFF
+        
+        if gestOn == False:
+            cv2.putText(img, 'Ativar gestos clique "G"', (50, 113), font, fontScale, color, thickness, cv2.LINE_AA)
+        
+        if navGest == ord('g') or navGest == ord('G'):
+            if not gestOn:
+                gestOn = True
+        
+        
+        if gestOn:
+            
+            # Executa os gestos de acordo com a quantidade de dedos
+            if THT[1] < THM[1]:
+                if not prev_state['thumb']:
+                    active = True
+                    pyautogui.keyDown('alt')
+                prev_state['thumb'] = True
+            else:
+                if prev_state['thumb']:
+                    active = False
+                    pyautogui.keyUp('alt')
+                prev_state['thumb'] = False
+
+            if INT[1] < INP[1]:
+                if not active:
+                    active = True
+                    pyautogui.keyUp('win', 'p')
+            else:
+                active = False
+
+            if MIT[1] < MIP[1]:
+                if not active:
+                    active = True
+                    pyautogui.keyUp('alt', 'prtsc')
+            else:
+                active = False
+
+            if RIT[1] < RIP[1]:
+                if not active:
+                    active = True
+                    pyautogui.keyUp('win', 'e')
+            else:
+                active = False
+            
+            if PIT[1] < PIP[1]:
+                if not prev_state['thumb']:
+                    active = True
+                    pyautogui.hotkey('win', 'd')
+                prev_state['thumb'] = True
+            else:
+                if prev_state['thumb']:
+                    active = False
+                prev_state['thumb'] = False
+            
     # Exibir a imagem com as marcações
     cv2.imshow("img", img)
 
@@ -93,4 +160,4 @@ while test:
     k = cv2.waitKey(1) & 0xFF
     if k == 27 or k == 13:
         print("Você encerrou o programa")
-        test = False
+        break
