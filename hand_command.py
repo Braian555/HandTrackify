@@ -4,6 +4,7 @@ import hand_tracking_module as htm
 import math
 import pyautogui
 import time
+import keyboard
 
 # Configuração da câmera
 wCam, hCam = 1280, 720
@@ -28,16 +29,11 @@ detector = htm.handDetector(detectionCon=0.7, maxHands=1)
 
 # Variaveis de controle para o loop
 gestOn = False
-active = False
-
-# Adicione um novo conjunto de variáveis para controlar o estado anterior de cada dedo
-prev_state = {
-    'thumb': False,
-    'index': False,
-    'middle': False,
-    'ring': False,
-    'pinky': False
-}
+thumb_executed = False
+index_executed = False
+middle_executed = False
+ring_executed = False
+pinky_executed = False
 
 while True:
 
@@ -89,69 +85,64 @@ while True:
 
         if RIT[1] < RIP[1]:
             dedos_levantados += 1
-
+    
         if PIT[1] < PIP[1]:
             dedos_levantados += 1
 
         # Exibir o número total de dedos levantados
         cv2.putText(img, f'Dedos Levantados: {dedos_levantados}', (50, 50), font, fontScale, color, thickness, cv2.LINE_AA)
 
-        
-        # Verifica a se o usuario que usar navegação por gestos
-        navGest = cv2.waitKey(1) & 0xFF
-        
+        # Verifica se o usuário quer usar navegação por gestos
         if gestOn == False:
             cv2.putText(img, 'Ativar gestos clique "G"', (50, 113), font, fontScale, color, thickness, cv2.LINE_AA)
-        
-        if navGest == ord('g') or navGest == ord('G'):
-            if not gestOn:
-                gestOn = True
-        
+
+        # Usando a biblioteca keyboard para detectar a tecla 'G'
+        if keyboard.is_pressed('g') and not gestOn:
+            gestOn = True
         
         if gestOn:
-            
             # Executa os gestos de acordo com a quantidade de dedos
-            if THT[1] < THM[1]:
-                if not prev_state['thumb']:
-                    active = True
-                    pyautogui.keyDown('alt')
-                prev_state['thumb'] = True
-            else:
-                if prev_state['thumb']:
-                    active = False
-                    pyautogui.keyUp('alt')
-                prev_state['thumb'] = False
+            thumb_up = THT[1] > THM[1]
+            index_up = INT[1] < INP[1]
+            middle_up = MIT[1] < MIP[1]
+            ring_up = RIT[1] < RIP[1]
+            pinky_up = PIT[1] < PIP[1]
 
-            if INT[1] < INP[1]:
-                if not active:
-                    active = True
-                    pyautogui.keyUp('win', 'p')
-            else:
-                active = False
+            # Configuração para o dedo polegar (THUMB)
+            if thumb_up and not thumb_executed:
+                pyautogui.keyDown('alt')
+                thumb_executed = True
+            elif not thumb_up and thumb_executed:
+                pyautogui.keyUp('alt')
+                thumb_executed = False
 
-            if MIT[1] < MIP[1]:
-                if not active:
-                    active = True
-                    pyautogui.keyUp('alt', 'prtsc')
-            else:
-                active = False
+            # Configuração para o dedo indicador (INDEX)
+            if index_up and not index_executed:
+                pyautogui.hotkey('win', 'p')
+                index_executed = True
+            elif not index_up and index_executed:
+                index_executed = False
 
-            if RIT[1] < RIP[1]:
-                if not active:
-                    active = True
-                    pyautogui.keyUp('win', 'e')
-            else:
-                active = False
-            
-            if PIT[1] < PIP[1]:
-                if not prev_state['thumb']:
-                    active = True
-                    pyautogui.hotkey('win', 'd')
-                prev_state['thumb'] = True
-            else:
-                if prev_state['thumb']:
-                    active = False
-                prev_state['thumb'] = False
+            # Configuração para o dedo médio (MIDDLE)
+            if middle_up and not middle_executed:
+                pyautogui.hotkey('alt', 'prtsc')
+                middle_executed = True
+            elif not middle_up and middle_executed:
+                middle_executed = False
+
+            # Configuração para o dedo anelar (RING)
+            if ring_up and not ring_executed:
+                pyautogui.hotkey('win', 'e')
+                ring_executed = True
+            elif not ring_up and ring_executed:
+                ring_executed = False
+
+            # Configuração para o dedo mínimo (PINKY)
+            if pinky_up and not pinky_executed:
+                pyautogui.hotkey('win', 'd')
+                pinky_executed = True
+            elif not pinky_up and pinky_executed:
+                pinky_executed = False
             
     # Exibir a imagem com as marcações
     cv2.imshow("img", img)
