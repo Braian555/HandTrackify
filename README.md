@@ -165,10 +165,10 @@ Os IDs de cada parte do dedo:
 
 ## Contribuição
 
-Você está convidado a contribuir com melhorias ou correções. Abra uma issue ou envie um pull request de acordo com os termos da Licença MIT!
+Você está convidado a contribuir com melhorias ou correções. Abra uma issue ou envie um pull request de acordo com os termos da [LICENSE](https://github.com/Braian555/HandTrackify/blob/main/LICENSE).
 
 ## Licença
 
-Este projeto está licenciado sob a MIT License.
+Este projeto está licenciado sob os termos da [LICENSE](https://github.com/Braian555/HandTrackify/blob/main/LICENSE).
 
 Para uma compreensão mais aprofundada do código, consulte o script `hand_command.py` que contém a lógica principal de detecção de gestos.
