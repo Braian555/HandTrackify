@@ -28,6 +28,8 @@ Para demonstrar o poder deste projeto, foi criado um script que calcula a quanti
     pip install opencv-python
     pip install mediapipe
     pip install pyautogui
+    pip install numpy
+    pip install keyboard
     ```
 
 3. Permita que o aplicativo acesse a câmera.

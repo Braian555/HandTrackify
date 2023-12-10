@@ -5,7 +5,6 @@ import time
 
 # Bibliotecas de terceiros
 import cv2
-import numpy as np
 import pyautogui
 import keyboard
 
@@ -140,21 +139,21 @@ while True:
 
             # Configuração para o dedo médio (MIDDLE)
             if middle_up and not middle_executed:
-                pyautogui.hotkey('win', 'p')
+                pyautogui.hotkey('win', 'e')
                 middle_executed = True
             elif not middle_up and middle_executed:
                 middle_executed = False
 
             # Configuração para o dedo anelar (RING)
             if ring_up and not ring_executed:
-                pyautogui.hotkey('alt', 'prtsc')
+                pyautogui.hotkey('win', 'p')
                 ring_executed = True
             elif not ring_up and ring_executed:
                 ring_executed = False
 
             # Configuração para o dedo mínimo (PINKY)
             if pinky_up and not pinky_executed:
-                pyautogui.hotkey('win', 'e')
+                pyautogui.hotkey('prtscr')
                 pinky_executed = True
             elif not pinky_up and pinky_executed:
                 pinky_executed = False
