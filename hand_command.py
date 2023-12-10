@@ -1,10 +1,12 @@
 import cv2
 import numpy as np
 import hand_tracking_module as htm
+import calculator
 import math
 import pyautogui
 import time
 import keyboard
+import subprocess
 
 # Configuração da câmera
 wCam, hCam = 1280, 720
@@ -110,36 +112,42 @@ while True:
 
             # Configuração para o dedo polegar (THUMB)
             if thumb_up and not thumb_executed:
-                pyautogui.keyDown('alt')
+                # Abre o arquivo
+                try:
+                    calculator.Calculadora().mainloop()
+                except FileNotFoundError:
+                    print(f'O arquivo {nome_arquivo} não foi encontrado na pasta {diretorio_atual}.')
+                except Exception as e:
+                    print(f"Ocorreu um erro: {e}")
                 thumb_executed = True
             elif not thumb_up and thumb_executed:
-                pyautogui.keyUp('alt')
                 thumb_executed = False
 
             # Configuração para o dedo indicador (INDEX)
             if index_up and not index_executed:
-                pyautogui.hotkey('win', 'p')
+                #Abrir notepad
+                subprocess.run(["notepad.exe"])
                 index_executed = True
             elif not index_up and index_executed:
                 index_executed = False
 
             # Configuração para o dedo médio (MIDDLE)
             if middle_up and not middle_executed:
-                pyautogui.hotkey('alt', 'prtsc')
+                pyautogui.hotkey('win', 'p')
                 middle_executed = True
             elif not middle_up and middle_executed:
                 middle_executed = False
 
             # Configuração para o dedo anelar (RING)
             if ring_up and not ring_executed:
-                pyautogui.hotkey('win', 'e')
+                pyautogui.hotkey('alt', 'prtsc')
                 ring_executed = True
             elif not ring_up and ring_executed:
                 ring_executed = False
 
             # Configuração para o dedo mínimo (PINKY)
             if pinky_up and not pinky_executed:
-                pyautogui.hotkey('win', 'd')
+                pyautogui.hotkey('win', 'e')
                 pinky_executed = True
             elif not pinky_up and pinky_executed:
                 pinky_executed = False
@@ -147,8 +155,8 @@ while True:
     # Exibir a imagem com as marcações
     cv2.imshow("img", img)
 
-    # Encerrar o programa se a tecla ESC ou ENTER for pressionada
+    # Encerrar o programa se a tecla ENTER for pressionada
     k = cv2.waitKey(1) & 0xFF
-    if k == 27 or k == 13:
+    if k == 13:
         print("Você encerrou o programa")
         break
