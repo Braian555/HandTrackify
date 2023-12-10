@@ -1,12 +1,26 @@
+# Bibliotecas padrão
+import math
+import subprocess
+import time
+
+# Bibliotecas de terceiros
 import cv2
 import numpy as np
+import pyautogui
+import keyboard
+
+# Modulos personalizados
 import hand_tracking_module as htm
 import calculator
-import math
-import pyautogui
-import time
-import keyboard
-import subprocess
+
+# Funções de melhor leitura
+def abrir_calculadora():
+    try:
+        calculator.Calculadora().mainloop()
+    except FileNotFoundError:
+        print(f'O arquivo {nome_arquivo} não foi encontrado na pasta {diretorio_atual}.')
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
 
 # Configuração da câmera
 wCam, hCam = 1280, 720
@@ -112,20 +126,13 @@ while True:
 
             # Configuração para o dedo polegar (THUMB)
             if thumb_up and not thumb_executed:
-                # Abre o arquivo
-                try:
-                    calculator.Calculadora().mainloop()
-                except FileNotFoundError:
-                    print(f'O arquivo {nome_arquivo} não foi encontrado na pasta {diretorio_atual}.')
-                except Exception as e:
-                    print(f"Ocorreu um erro: {e}")
+                abrir_calculadora()
                 thumb_executed = True
             elif not thumb_up and thumb_executed:
                 thumb_executed = False
 
             # Configuração para o dedo indicador (INDEX)
             if index_up and not index_executed:
-                #Abrir notepad
                 subprocess.run(["notepad.exe"])
                 index_executed = True
             elif not index_up and index_executed:

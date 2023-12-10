@@ -1,16 +1,19 @@
 import tkinter as tk
+from tkinter import PhotoImage
+from PIL import Image, ImageTk
 
 class Calculadora(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Calculadora")
         self.geometry("400x600")
+        self.configure(bg="#f0f0f0")  # Cor de fundo
 
         self.resultado_var = tk.StringVar()
 
         # Entrada para exibir o resultado
-        entrada = tk.Entry(self, textvariable=self.resultado_var, font=('Helvetica', 20), justify='right')
-        entrada.grid(row=0, column=0, columnspan=4, ipadx=8, ipady=8)
+        entrada = tk.Entry(self, textvariable=self.resultado_var, font=('Helvetica', 20), justify='right', bd=10)
+        entrada.grid(row=0, column=0, columnspan=4, ipadx=8, ipady=8, sticky='nsew')
 
         # Botões
         botoes = [
@@ -21,8 +24,14 @@ class Calculadora(tk.Tk):
         ]
 
         for (texto, linha, coluna) in botoes:
-            tk.Button(self, text=texto, padx=20, pady=20, font=('Helvetica', 14),
-                      command=lambda t=texto: self.botao_clicado(t)).grid(row=linha, column=coluna)
+            botao = tk.Button(self, text=texto, padx=20, pady=20, font=('Helvetica', 14), bd=5,
+                              command=lambda t=texto: self.botao_clicado(t))
+            botao.grid(row=linha, column=coluna, sticky='nsew')
+
+        # Configurar pesos para que os botões e a entrada se expandam
+        for i in range(5):
+            self.grid_rowconfigure(i, weight=1)
+            self.grid_columnconfigure(i, weight=1)
 
     def botao_clicado(self, valor):
         if valor == "=":
