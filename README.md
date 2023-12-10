@@ -144,7 +144,9 @@ O script realiza a detecção de mãos em tempo real e exibe a quantidade de ded
 
 ## Layout dos IDs
 
-Os IDs de cada parte do dedo podem ser visualizados [aqui](link_para_a_imagem).
+Os IDs de cada parte do dedo:
+![image](https://github.com/Braian555/HandTrackify/assets/76633571/c6802274-998d-4933-a7c6-40f506a8f606)
+
 
 ## Contribuição
 
