@@ -162,6 +162,8 @@ O script realiza a detecção de mãos em tempo real e exibe a quantidade de ded
 
 Os IDs de cada parte do dedo:
 ![image](https://github.com/Braian555/HandTrackify/assets/76633571/c6802274-998d-4933-a7c6-40f506a8f606)
+Imagem fornecida pelo Google Developers no [Guia de Detecção de Pontos de Referência nas Mãos](https://google.com.br/maps/preview).
+Esta imagem é usada de acordo com a licença Creative Commons Attribution 4.0 (CC BY 4.0).
 
 
 ## Contribuição
