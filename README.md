@@ -173,5 +173,3 @@ Você está convidado a contribuir com melhorias ou correções. Abra uma issue 
 ## Licença
 
 Este projeto está licenciado sob os termos da [LICENSE](https://github.com/Braian555/HandTrackify/blob/main/LICENSE).
-
-Para uma compreensão mais aprofundada do código, consulte o script `hand_command.py` que contém a lógica principal de detecção de gestos.
