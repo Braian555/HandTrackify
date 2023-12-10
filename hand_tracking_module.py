@@ -1,3 +1,16 @@
+# =============================================================================
+# Copyright 2023-2025 Autor da HandTrackify.
+#
+# Arquivo: hand_tracking_module.py
+# Criado por: Braian E.C. Vidal
+# Data de Criação: 08/12/2023
+# Última Modificação por: Braian E.C. Vidal
+# Data da Última Modificação: 10/12/2023
+# Licença: GNU General Public License v3.0
+# Link da Licença: https://github.com/Braian555/HandTrackify/blob/main/LICENSE
+#
+# =============================================================================
+
 import cv2
 import mediapipe as mp
 import time

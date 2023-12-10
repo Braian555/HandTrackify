@@ -1,3 +1,16 @@
+# =============================================================================
+# Copyright 2023-2025 Autor da HandTrackify.
+#
+# Arquivo: hand_command.py
+# Criado por: Braian E.C. Vidal
+# Data de Criação: 08/12/2023
+# Última Modificação por: Braian E.C. Vidal
+# Data da Última Modificação: 10/12/2023
+# Licença: GNU General Public License v3.0
+# Link da Licença: https://github.com/Braian555/HandTrackify/blob/main/LICENSE
+#
+# =============================================================================
+
 # Bibliotecas padrão
 import math
 import subprocess
@@ -163,6 +176,6 @@ while True:
 
     # Encerrar o programa se a tecla ENTER for pressionada
     k = cv2.waitKey(1) & 0xFF
-    if k == 13:
+    if k == 27 or k == 13:
         print("Você encerrou o programa")
         break
