@@ -165,7 +165,7 @@ Os IDs de cada parte do dedo:
 
 ## Contribuição
 
-Sinta-se à vontade para contribuir com melhorias ou corrigir problemas. Abra uma issue ou envie um pull request!
+Você está convidado a contribuir com melhorias ou correções. Abra uma issue ou envie um pull request de acordo com os termos da Licença MIT!
 
 ## Licença
 
