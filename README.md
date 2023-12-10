@@ -140,7 +140,22 @@ Essa abordagem é utilizada para determinar a posição dos dedos e fornecer um 
 
 ## Funcionalidades
 
-O script realiza a detecção de mãos em tempo real e exibe a quantidade de dedos levantados na interface gráfica. Os dedos são identificados pelos números '1', '2', '3', '4' e '5'.
+O script realiza a detecção de mãos em tempo real e exibe a quantidade de dedos levantados na interface gráfica. Além da contagem de dedos, o projeto implementa funcionalidades específicas dependendo do dedo levantado após precionar a tecla "g":
+
+1. **Dedão (polegar): Abrir Calculadora em Python**
+   - Ao levantar o dedão, o sistema executará uma calculadora em Python, proporcionando uma experiência rápida e eficiente para cálculos.
+
+2. **Indicador: Abrir Notepad**
+   - Levantando o indicador, o sistema abrirá o Notepad, oferecendo um acesso fácil para tomar notas ou fazer edições de texto simples.
+
+3. **Dedo Médio: Minimizar Todas as Janelas (Win + D)**
+   - Levantar o dedo médio executará o comando para minimizar todas as janelas ativas, proporcionando uma maneira rápida de organizar a área de trabalho.
+
+4. **Anelar: Capturar Tela (Print Screen)**
+   - Ao levantar o dedo anelar, o sistema realizará uma captura de tela, permitindo capturar e salvar a visualização atual da tela para referência ou compartilhamento.
+
+5. **Mindinho: Abrir Explorador de Arquivos (Win + E)**
+   - Levantar o mindinho executará o comando para abrir o Explorador de Arquivos, proporcionando um acesso rápido e conveniente para navegar pelos arquivos do sistema.
 
 ## Layout dos IDs
 
